@@ -58,67 +58,83 @@ function playRound (playerSelection, computerSelection){
             message.textContent = "Scissors beats paper! You lose!!!"
         }
     }
+
+ 
 }
 
 
 function result(){
-    if (playerScore === 5) {
+    if(playerScore === 5) {
         scoreResult.textContent = "YOU WON !"
         scoreBoard.append(scoreResult)
     }
-    else if (computerScore === 5){
+    else if(computerScore === 5){
         scoreResult.textContent = "YOU LOSE !"
         scoreBoard.append(scoreResult)
     }
 }
 
 function clickRock () {
+
    playRound("rock",getComputerChoice())
-         if (playerScore === 5){
+
+         if(playerScore === 5){
             rockBtn.removeEventListener("click", clickRock)
-            paperBtn.removeEventListener("click", clickRock)
-            scissorsBtn.removeEventListener("click", clickRock)
+            paperBtn.removeEventListener("click", clickPaper)
+            scissorsBtn.removeEventListener("click", clickScissors)
             result()
     }
         else if (computerScore === 5){
             rockBtn.removeEventListener("click", clickRock)
-            paperBtn.removeEventListener("click", clickRock)
-            scissorsBtn.removeEventListener("click", clickRock)
+            paperBtn.removeEventListener("click", clickPaper)
+            scissorsBtn.removeEventListener("click", clickScissors)
             result()
     }
+    console.log(playerScore)
+    console.log(computerScore)
+
 }
 
 function clickPaper () {
-    playRound("paper",getComputerChoice())
-          if (playerScore === 5){
-            rockBtn.removeEventListener("click", clickPaper)
+  
+        playRound("paper",getComputerChoice())
+     
+          if(playerScore === 5){
+            rockBtn.removeEventListener("click", clickRock)
             paperBtn.removeEventListener("click", clickPaper)
-            scissorsBtn.removeEventListener("click", clickPaper)
-            result()
-     }
-         else if (computerScore === 5){
-             rockBtn.removeEventListener("click", clickPaper)
-             paperBtn.removeEventListener("click", clickPaper)
-             scissorsBtn.removeEventListener("click", clickPaper)
-             result()
-     }
- }
-
- function clickScissors () {
-    playRound("scissors",getComputerChoice())
-          if (playerScore === 5){
-            rockBtn.removeEventListener("click", clickScissors)
-            paperBtn.removeEventListener("click", clickScissors)
             scissorsBtn.removeEventListener("click", clickScissors)
             result()
      }
          else if (computerScore === 5){
-             rockBtn.removeEventListener("click", clickScissors)
-             paperBtn.removeEventListener("click", clickScissors)
-             scissorsBtn.removeEventListener("click", clickScissors)
+            rockBtn.removeEventListener("click", clickRock)
+            paperBtn.removeEventListener("click", clickPaper)
+            scissorsBtn.removeEventListener("click", clickScissors)
              result()
      }
+     console.log(playerScore)
+     console.log(computerScore)
+ 
  }
+
+ function clickScissors () {
+        
+        playRound("scissors",getComputerChoice())
+        
+        if(playerScore === 5){
+            rockBtn.removeEventListener("click", clickRock)
+            paperBtn.removeEventListener("click", clickPaper)
+            scissorsBtn.removeEventListener("click", clickScissors)
+        result()
+     }
+        else if (computerScore === 5){
+            rockBtn.removeEventListener("click", clickRock)
+            paperBtn.removeEventListener("click", clickPaper)
+            scissorsBtn.removeEventListener("click", clickScissors)
+            result()
+     }
+ 
+ }
+
 
 function game() {
     playerScore = 0
@@ -131,6 +147,7 @@ function game() {
     scoreBoard.append(message)
     scoreBoard.append(yourScore)
     scoreBoard.append(comScore)
+
     rockBtn.addEventListener("click", clickRock)
     paperBtn.addEventListener("click", clickPaper)
     scissorsBtn.addEventListener("click", clickScissors) 
